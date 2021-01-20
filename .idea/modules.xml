@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/seo-manager-app.iml" filepath="$PROJECT_DIR$/.idea/seo-manager-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../seo-manager-server/.idea/seo-manager-server.iml" filepath="$PROJECT_DIR$/../seo-manager-server/.idea/seo-manager-server.iml" />
     </modules>
   </component>
 </project>
