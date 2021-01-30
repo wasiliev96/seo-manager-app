@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import './App.css';
 import firebase from "firebase/app";
-import {logIn, logOut} from "./api/firebaseAuth";
+import {logIn, logOut, signUp} from "./api/firebaseAuth";
 
 const client = axios.create({
     baseURL: 'http://localhost:8080', //server path
@@ -13,8 +13,9 @@ function App() {
     const [authStatus, setAuthStatus] = useState('No Auth Status');
     const signIn = async () => {
         await logIn(
-            "myemail@gmail.com",
-            "123",
+            // @ts-ignore
+            process.env.REACT_APP_USER_EMAIL,
+            process.env.REACT_APP_USER_PASSWORD,
             message => setAuthStatus(message),
             message => setAuthStatus(message)
         )
@@ -25,6 +26,12 @@ function App() {
             message => setAuthStatus(message)
         )
     }
+    const signUpUser = async () => {
+        // @ts-ignore
+        await signUp('wasiliev.game@gmail.com',
+            `Gatto3579603`)
+    }
+
     const sendRequest = () => {
         if (firebase.auth().currentUser) {
             firebase.auth().currentUser?.getIdToken(true)
@@ -60,6 +67,7 @@ function App() {
             <button className="auth" onClick={signIn}>Sign In</button>
             <button className="auth" onClick={sendRequest}>Send request</button>
             <button className="auth" onClick={signOut}>Sign Out</button>
+            <button onClick={signUpUser}>Sign Up</button>
             <p>{response}</p>
         </div>
     );

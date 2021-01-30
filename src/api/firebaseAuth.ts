@@ -19,7 +19,16 @@ const logOut = async (onsuccess: AuthCallback, onerror: AuthCallback) => {
     })
 };
 
+const signUp = async (email:string, password:string) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(userData => {
+        })
+        .catch(error => { // do stuff with error })
+        })
+}
+
 export {
     logIn,
     logOut,
+    signUp
 }
